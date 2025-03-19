@@ -39,7 +39,7 @@ void RegisterConsoleCommandList(CATEGORY category, ConsoleCommandList list[], si
 
 void ConsoleCommandUnregister(const char* command);
 
-void ConsoleCommandExecute(char* commandLine, int32_t addToHistory);
+void ConsoleCommandExecute(const char* commandLine, int32_t addToHistory);
 
 void MakeCommandCurrent(CONSOLELINE * lineptr, char const * command);
 

@@ -197,7 +197,7 @@ void MakeCommandCurrent(CONSOLELINE * lineptr, char const * command) {
     lineptr->chars = len;
 }
 
-void ConsoleCommandExecute(char* commandLine, int32_t addToHistory) {
+void ConsoleCommandExecute(const char* commandLine, int32_t addToHistory) {
     auto em = g_ExecCreateMode;
 
     if (em == EM_RECORDING || em == EM_PROMPTOVERWRITE || em == EM_APPEND) {
