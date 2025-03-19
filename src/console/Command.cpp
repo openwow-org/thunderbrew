@@ -1,5 +1,5 @@
 #include "console/Command.hpp"
-#include "console/Line.hpp"
+#include "console/Console.hpp"
 
 #include <storm/Error.hpp>
 #include <storm/Unicode.hpp>
@@ -179,22 +179,6 @@ CONSOLECOMMAND* ParseCommand(const char* commandLine, const char** command, char
     }
 
     return g_consoleCommandHash.Ptr(cmd);
-}
-
-void MakeCommandCurrent(CONSOLELINE * lineptr, char const * command) {
-    auto len = lineptr->inputstart;
-    lineptr->inputpos = len;
-    lineptr->chars = len;
-    lineptr->buffer[len] = '\0';
-
-    len = SStrLen(command);
-    ReserveInputSpace(lineptr, len);
-
-    SStrCopy(lineptr->buffer + lineptr->inputpos, command, STORM_MAX_STR);
-
-    len = lineptr->inputpos + len;
-    lineptr->inputpos = len;
-    lineptr->chars = len;
 }
 
 void ConsoleCommandExecute(const char* commandLine, int32_t addToHistory) {

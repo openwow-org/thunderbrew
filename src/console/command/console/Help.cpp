@@ -1,5 +1,5 @@
+#include "console/Console.hpp"
 #include "console/Command.hpp"
-#include "console/Line.hpp"
 
 struct CategoryTranslation {
     CATEGORY categoryValue;

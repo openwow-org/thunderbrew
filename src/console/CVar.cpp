@@ -1,7 +1,6 @@
 #include "console/CVar.hpp"
+#include "console/Console.hpp"
 #include "console/Command.hpp"
-#include "console/Types.hpp"
-#include "console/Line.hpp"
 #include "util/SFile.hpp"
 
 #include <bc/os/File.hpp>
