@@ -2,6 +2,7 @@
 #include "ui/Types.hpp"
 #include "util/Lua.hpp"
 #include "util/Unimplemented.hpp"
+#include "console/Command.hpp"
 #include <common/Time.hpp>
 #include <cstdint>
 
@@ -17,7 +18,11 @@ int32_t Script_GetGameTime(lua_State* L) {
 }
 
 int32_t Script_ConsoleExec(lua_State* L) {
-    WHOA_UNIMPLEMENTED(0);
+    if ( !lua_isstring(L, 1u) )
+        luaL_error(L, "Usage: ConsoleExec(\"console_command\")");
+    const char * commandString = lua_tolstring(L, 1, 0);
+    ConsoleCommandExecute(commandString, 0);
+    return 0;
 }
 
 int32_t Script_AccessDenied(lua_State* L) {
