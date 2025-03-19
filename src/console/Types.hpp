@@ -68,6 +68,7 @@ class CONSOLELINE : public TSLinkedNode<CONSOLELINE> {
         CGxString* fontPointer;
 
         ~CONSOLELINE();
+        void Backspace();
 };
 
 class ConsoleCommandList {

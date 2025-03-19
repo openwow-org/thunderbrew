@@ -207,20 +207,6 @@ void MoveLinePtr(int32_t direction, int32_t modifier) {
     }
 }
 
-void BackspaceLine(CONSOLELINE* line) {
-    if (line->inputstart <= line->inputpos && line->inputpos != line->inputstart) {
-        if (line->inputpos < line->chars) {
-            memmove(line->buffer + line->inputpos + -1, line->buffer + line->inputpos, (line->chars - line->inputpos) + 1);
-        } else {
-            line->buffer[line->inputpos - 1] = '\0';
-        }
-        line->chars--;
-        line->inputpos--;
-
-        SetInputString(line->buffer);
-    }
-}
-
 CONSOLELINE* GetCurrentLine() {
     return s_currlineptr;
 }
@@ -232,6 +218,20 @@ CONSOLELINE::~CONSOLELINE() {
 
     if (this->fontPointer) {
         GxuFontDestroyString(this->fontPointer);
+    }
+}
+
+void CONSOLELINE::Backspace() {
+    if (this->inputstart <= this->inputpos && this->inputpos != this->inputstart) {
+        if (this->inputpos < this->chars) {
+            memmove(this->buffer + this->inputpos + -1, this->buffer + this->inputpos, (this->chars - this->inputpos) + 1);
+        } else {
+            this->buffer[this->inputpos - 1] = '\0';
+        }
+        this->chars--;
+        this->inputpos--;
+
+        SetInputString(this->buffer);
     }
 }
 

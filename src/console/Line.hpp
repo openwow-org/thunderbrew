@@ -16,8 +16,6 @@ void PasteInInputLine(char* characters);
 
 void MoveLinePtr(int32_t direction, int32_t modifier);
 
-void BackspaceLine(CONSOLELINE* line);
-
 void ReserveInputSpace(CONSOLELINE* line, size_t len);
 
 CONSOLELINE* GetInputLine();

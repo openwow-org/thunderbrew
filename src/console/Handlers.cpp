@@ -111,9 +111,11 @@ int32_t OnKeyDown(const EVENT_DATA_KEY* data, void* param) {
             line->inputpos++;
         }
         break;
-
     case KEY_BACKSPACE:
-        BackspaceLine(line);
+        line->Backspace();
+        break;
+
+    default:
         break;
     }
 
@@ -154,7 +156,7 @@ int32_t OnKeyDownRepeat(const EVENT_DATA_KEY* data, void* param) {
         }
         break;
     case KEY_BACKSPACE:
-        BackspaceLine(line);
+        line->Backspace();
         break;
     }
 
