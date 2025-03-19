@@ -181,7 +181,7 @@ CONSOLECOMMAND* ParseCommand(const char* commandLine, const char** command, char
     return g_consoleCommandHash.Ptr(cmd);
 }
 
-void MakeCommandCurrent(CONSOLELINE* lineptr, char* command) {
+void MakeCommandCurrent(CONSOLELINE * lineptr, char const * command) {
     auto len = lineptr->inputstart;
     lineptr->inputpos = len;
     lineptr->chars = len;

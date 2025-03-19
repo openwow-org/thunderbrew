@@ -41,7 +41,7 @@ void ConsoleCommandUnregister(const char* command);
 
 void ConsoleCommandExecute(char* commandLine, int32_t addToHistory);
 
-void MakeCommandCurrent(CONSOLELINE* lineptr, char* command);
+void MakeCommandCurrent(CONSOLELINE * lineptr, char const * command);
 
 // Commands
 
