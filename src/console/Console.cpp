@@ -380,6 +380,23 @@ void CONSOLELINE::Up () {
     }
 }
 
+//=============================================================================
+void CONSOLELINE::Down () {
+    const char * commandHistory = "";
+    if (s_historyIndex != -1) {
+        int index = s_historyIndex - 1;
+        if (s_historyIndex) {
+            commandHistory = ConsoleCommandHistory(index);
+            if (!commandHistory)
+                return;
+        }
+        MakeCommandCurrent(this, commandHistory);
+        s_historyIndex = index;
+        SetInputString(this->buffer);
+    }
+}
+
+
 /******************************************************************************
 *
 *   Internal
@@ -1019,6 +1036,9 @@ int OnKeyDown (const EVENT_DATA_KEY* data, void* param) {
         if (line->inputpos < line->chars) {
             line->inputpos++;
         }
+        break;
+    case KEY_DOWN:
+        line->Down();
         break;
     case KEY_BACKSPACE:
         line->Backspace();

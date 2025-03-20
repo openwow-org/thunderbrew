@@ -70,6 +70,7 @@ class CONSOLELINE : public TSLinkedNode<CONSOLELINE> {
         ~CONSOLELINE();
         void Backspace();
         void Up();
+        void Down();
 };
 
 class ConsoleCommandList {
