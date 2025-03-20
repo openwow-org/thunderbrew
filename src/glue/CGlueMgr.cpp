@@ -16,6 +16,7 @@
 #include "ui/Interface.hpp"
 #include "ui/ScriptFunctions.hpp"
 #include "console/CVar.hpp"
+#include "console/Command.hpp"
 #include "util/Filesystem.hpp"
 #include "util/SysMessage.hpp"
 #include <cstdio>
@@ -66,6 +67,8 @@ float CGlueMgr::m_screenWidth;
 int32_t CGlueMgr::m_showedDisconnect;
 CSimpleTop* CGlueMgr::m_simpleTop;
 int32_t CGlueMgr::m_suspended;
+
+static int CCommand_Script (const char *, const char *);
 
 float CalculateAspectRatio() {
     auto widescreenVar = CVar::Lookup("widescreen");
@@ -749,8 +752,23 @@ void CGlueMgr::UpdateCurrentScreen(const char* screen) {
 
 //=============================================================================
 void CGlueMgr::RegisterConsoleCommands () {
+    ConsoleCommandRegister("script", CCommand_Script, CATEGORY::DEBUG, NOHELP);
 }
 
 //=============================================================================
 void CGlueMgr::UnregisterConsoleCommands () {
+    ConsoleCommandUnregister("script");
+}
+
+
+/******************************************************************************
+*
+*   COMMAND HANDLERS
+*
+***/
+
+//=============================================================================
+int CCommand_Script (const char *command, const char *arguments) {
+    FrameScript_Execute(arguments, arguments, nullptr);
+    return 1;
 }
