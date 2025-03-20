@@ -34,7 +34,7 @@ void BaseInitializeGlobal() {
     PropInitialize();
 }
 
-void ClientMiscInitialize() {
+void ClientRegisterConsoleCommands () {
     // TODO
 
     Client::g_accountListVar = CVar::Register(
@@ -381,7 +381,7 @@ void WowClientInit() {
     // EventRegister(EVENT_ID_5, (int)sub_4020E0);
     // _cfltcvt_init_0();
 
-    ClientMiscInitialize();
+    ClientRegisterConsoleCommands();
 
     // sub_401B60();
 
