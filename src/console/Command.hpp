@@ -12,7 +12,7 @@
 #define CONSOLE_CMD_BUFFER_SIZE 1024
 #define CONSOLE_MAX_CMD_LENGTH 64
 #define CONSOLE_HISTORY_DEPTH 32
-#define CONSOLE_NOHELP nullptr
+#define NOHELP nullptr
 
 extern TSHashTable<CONSOLECOMMAND, HASHKEY_STRI> g_consoleCommandHash;
 extern char g_commandHistory[CONSOLE_HISTORY_DEPTH][CONSOLE_CMD_BUFFER_SIZE];
