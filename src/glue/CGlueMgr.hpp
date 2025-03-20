@@ -76,6 +76,10 @@ class CGlueMgr {
         static void Sub4D8BA0();
         static void Suspend();
         static void UpdateCurrentScreen(const char* screen);
+
+    protected:
+        static void RegisterConsoleCommands ();
+        static void UnregisterConsoleCommands ();
 };
 
 #endif

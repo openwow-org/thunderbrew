@@ -575,6 +575,7 @@ void CGlueMgr::Resume() {
 
         case 3:
             FrameXML_FreeHashNodes();
+            RegisterConsoleCommands();
             FrameXML_CreateFrames("Interface\\GlueXML\\GlueXML.toc", 0, &md5, &status);
 
             MD5Final(digest2, &md5);
@@ -732,6 +733,7 @@ void CGlueMgr::Suspend() {
 
     // TODO
 
+    UnregisterConsoleCommands();
     FrameXML_FreeHashNodes();
 
     // TODO
@@ -743,4 +745,12 @@ void CGlueMgr::UpdateCurrentScreen(const char* screen) {
     SStrCopy(CGlueMgr::m_currentScreen, screen, sizeof(CGlueMgr::m_currentScreen));
 
     // TODO
+}
+
+//=============================================================================
+void CGlueMgr::RegisterConsoleCommands () {
+}
+
+//=============================================================================
+void CGlueMgr::UnregisterConsoleCommands () {
 }
