@@ -367,6 +367,18 @@ void CONSOLELINE::Backspace () {
     }
 }
 
+//=============================================================================
+void CONSOLELINE::Up () {
+    if (s_historyIndex != ConsoleCommandHistoryDepth() - 1) {
+        int index = s_historyIndex + 1;
+        const char * commandHistory = ConsoleCommandHistory(index);
+        if (commandHistory) {
+            MakeCommandCurrent(this, commandHistory);
+            s_historyIndex = index;
+            SetInputString(this->buffer);
+        }
+    }
+}
 
 /******************************************************************************
 *
@@ -999,6 +1011,9 @@ int OnKeyDown (const EVENT_DATA_KEY* data, void* param) {
         if (line->inputstart <= line->inputpos && line->inputpos != line->inputstart) {
             line->inputpos--;
         }
+        break;
+    case KEY_UP:
+        line->Up();
         break;
     case KEY_RIGHT:
         if (line->inputpos < line->chars) {
