@@ -354,17 +354,15 @@ CONSOLELINE::~CONSOLELINE () {
 
 //=============================================================================
 void CONSOLELINE::Backspace () {
-    if (this->inputstart <= this->inputpos && this->inputpos != this->inputstart) {
-        if (this->inputpos < this->chars) {
-            memmove(this->buffer + this->inputpos + -1,
-                    this->buffer + this->inputpos,
-                    this->chars - this->inputpos + 1);
-        } else {
+    if (this->inputpos > this->inputstart) {
+        if (this->chars <= this->inputpos)
             this->buffer[this->inputpos - 1] = '\0';
-        }
-        this->chars--;
-        this->inputpos--;
-
+        else
+            memcpy(&this->buffer[this->inputpos - 1],
+                   &this->buffer[this->inputpos],
+                   this->chars - this->inputpos + 1);
+        --this->inputpos;
+        --this->chars;
         SetInputString(this->buffer);
     }
 }
